@@ -1,0 +1,461 @@
+:root {
+  color-scheme: dark;
+  --bg: #14161a;
+  --surface: #1f2228;
+  --surface-2: #2a2e36;
+  --text: #eef0f3;
+  --muted: #9aa1ad;
+  --accent: #268bcc;
+  --hard: #e4574c;
+  --good: #36c27a;
+  --rule: #3b3f48;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page {
+  flex: 1;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 5.5rem;
+}
+
+a { color: inherit; }
+.muted { color: var(--muted); }
+
+/* --- progress bar ------------------------------------------------------- */
+
+.progress-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.progress-label {
+  margin: 0.4rem 0 1.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.progress-goal-met {
+  margin: -1.1rem 0 1.5rem;
+  font-size: 0.85rem;
+  color: var(--good);
+}
+
+/* --- practice prompt + flashcard ---------------------------------------- */
+
+.prompt { text-align: center; margin-bottom: 1.25rem; }
+.prompt-infinitive {
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin: 0 0 0.15rem;
+  font-weight: 600;
+}
+.prompt-gloss {
+  font-size: 1.6rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.flashcard {
+  background: var(--surface);
+  border-radius: 1.25rem;
+  padding: 2rem 1.5rem 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  perspective: 800px;
+}
+.flashcard.flipping { animation: card-flip 0.3s ease; }
+@keyframes card-flip {
+  0%   { transform: rotateY(0deg); }
+  50%  { transform: rotateY(90deg); }
+  100% { transform: rotateY(0deg); }
+}
+.flashcard-empty {
+  padding: 2.5rem 1.5rem;
+  gap: 0.5rem;
+}
+
+.tense-pill {
+  display: inline-block;
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  background: var(--surface-2);
+}
+.tense-present { background: #2c4a6e; color: #8ec6ff; }
+.tense-perfect { background: #5a3b6e; color: #d6a8ff; }
+.tense-future  { background: #1f5b3f; color: #8ee6b8; }
+.tense-konj2   { background: #6e4a1f; color: #ffcf8e; }
+
+.card-pronoun {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+.card-answer {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0.4rem 0 1.25rem;
+}
+
+/* `.card-hint` and `.card-grades` occupy the same grid cell so swapping which
+   one is visible doesn't change the flashcard's height (no layout jump on
+   reveal) — both stay laid out, `.placeholder` only hides them visually. */
+.card-bottom {
+  display: grid;
+  width: 100%;
+}
+.card-hint, .card-grades {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.card-action {
+  width: 100%;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.card-grades { width: calc(100% + 3rem); margin: 0 -1.5rem; }
+.grade-form {
+  display: flex;
+  border-top: 1px solid var(--rule);
+}
+.grade-btn {
+  flex: 1;
+  border: none;
+  padding: 1.1rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+}
+.grade-hard { background: var(--hard); border-radius: 0 0 0 1.25rem; }
+.grade-good { background: var(--good); border-radius: 0 0 1.25rem 0; }
+
+.hidden { display: none !important; }
+/* Stays in normal flow (occupies its space) but invisible — used on
+   `.prompt-infinitive`/`.card-answer` (always-stacked) and `.card-hint`/
+   `.card-grades` (overlaid via `.card-bottom`'s grid) so toggling never
+   shifts surrounding layout. */
+.placeholder { visibility: hidden; }
+.loading { text-align: center; padding: 3rem 0; }
+
+/* --- profile picker ------------------------------------------------------ */
+
+.profile-picker { text-align: center; padding-top: 2rem; }
+.profile-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+.profile-button, .new-profile-form button, .new-profile-form input {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+.profile-button { cursor: pointer; }
+.new-profile-form button { background: var(--accent); color: #fff; font-weight: 700; border: none; cursor: pointer; }
+
+/* --- verb list / detail -------------------------------------------------- */
+
+.verb-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+.verb-add-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.verb-filter-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.verb-filter-tab {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.verb-filter-tab.active { background: var(--accent); color: #fff; }
+
+.verb-bulk-actions { display: flex; gap: 0.75rem; margin-bottom: 1rem; }
+.verb-bulk-actions form { flex: 1; margin: 0; }
+.verb-bulk-button {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.verb-list { list-style: none; padding: 0; }
+.verb-list-item-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 0.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+.verb-list-link {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  justify-content: space-between;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+.verb-toggle { flex: none; }
+.verb-infinitive { font-weight: 600; }
+
+.back-link { display: inline-block; margin-bottom: 0.75rem; text-decoration: none; color: var(--muted); }
+.verb-detail-header { display: flex; align-items: center; justify-content: space-between; }
+.verb-edit-link { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+.verb-notes {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.6rem;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+}
+.tense-section { margin: 1.5rem 0; }
+.conjugation-table { width: 100%; border-collapse: collapse; }
+.conjugation-table td { padding: 0.5rem 0.25rem; border-bottom: 1px solid var(--rule); }
+.answer-cell { text-align: right; font-weight: 600; }
+.rating-cell { width: 0; white-space: nowrap; text-align: right; padding-left: 0.6rem; letter-spacing: 1px; }
+.star { font-size: 0.85rem; }
+.star-filled { color: var(--accent); }
+.star-empty { color: var(--rule); }
+
+/* --- add / edit verb form ------------------------------------------------- */
+
+.form-errors {
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.6rem;
+  background: rgba(228, 87, 76, 0.15);
+  color: var(--hard);
+  font-size: 0.85rem;
+  list-style: none;
+}
+.form-errors li + li { margin-top: 0.25rem; }
+
+.verb-form { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 1rem; }
+.form-field { display: flex; flex-direction: column; gap: 0.35rem; }
+.form-field label, .form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.form-field-hint { font-weight: 400; }
+.form-field input[type="text"],
+.form-field textarea {
+  padding: 0.7rem 0.8rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: inherit;
+}
+.form-field textarea { resize: vertical; }
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.75rem;
+}
+.form-section legend {
+  padding: 0 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.form-radio { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; }
+.form-radio input { accent-color: var(--accent); }
+
+.form-help {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.6rem;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.konj2-toggle { accent-color: var(--accent); margin-right: 0.5rem; }
+.konj2-toggle-label { font-weight: 600; color: var(--text); }
+.konj2-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+.konj2-toggle:not(:checked) ~ .konj2-fields { display: none; }
+
+.verb-form-submit {
+  padding: 0.85rem;
+  border-radius: 0.75rem;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* --- settings / toggle switch (also used by the Verbs enable/disable list) -- */
+
+.settings-page h1 { margin-bottom: 1.5rem; }
+.settings-section { margin-bottom: 2rem; }
+.settings-section h2 { font-size: 1rem; color: var(--muted); margin: 0 0 0.5rem; }
+.settings-profile-name { font-size: 1.2rem; font-weight: 600; margin: 0 0 0.5rem; }
+.settings-profile-links a { color: var(--accent); text-decoration: none; margin-right: 1.25rem; }
+.settings-save-button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.profile-rename-form { display: flex; flex-direction: column; gap: 0.85rem; margin: 1.25rem 0 2rem; }
+
+.profile-stats-list { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+.profile-stats-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.25rem;
+  border-bottom: 1px solid var(--rule);
+  font-weight: 600;
+}
+
+.profile-delete-button, .profile-delete-confirm-button {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--hard);
+  background: transparent;
+  color: var(--hard);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.profile-delete-confirm-button { border: none; background: var(--hard); color: #fff; }
+.profile-delete-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.profile-delete-actions form { margin: 0; }
+.profile-delete-cancel-link { color: var(--muted); text-decoration: none; font-weight: 600; }
+
+.toggle-list { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.toggle-switch { position: relative; display: inline-block; width: 44px; height: 24px; flex: none; }
+.toggle-switch input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--surface-2);
+  border-radius: 999px;
+  transition: background-color 0.15s ease;
+  pointer-events: none;
+}
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: var(--text);
+  border-radius: 50%;
+  transition: transform 0.15s ease;
+}
+.toggle-switch input:checked + .toggle-slider { background: var(--accent); }
+.toggle-switch input:checked + .toggle-slider::before { transform: translateX(20px); }
+
+/* --- bottom nav ----------------------------------------------------------- */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background: var(--surface);
+  border-top: 1px solid var(--rule);
+  padding: 0.6rem 0 calc(0.6rem + env(safe-area-inset-bottom));
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: var(--muted);
+}
+.nav-item.active { color: var(--accent); }
+.nav-icon { font-size: 1.2rem; }

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Edit profile · Züritüütsch Verb Trainer{% endblock %}
+{% block content %}
+<section class="profile-edit-page">
+  <a href="/settings" class="back-link">&larr; Settings</a>
+  <h1>Edit profile</h1>
+
+  <form method="post" action="/profiles/{{ profile.id }}/edit" class="profile-rename-form">
+    <div class="form-field">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" value="{{ profile.name }}" required maxlength="60">
+    </div>
+    <button type="submit" class="verb-form-submit">Save name</button>
+  </form>
+
+  <div class="settings-section">
+    <h2>Stats</h2>
+    <ul class="profile-stats-list">
+      <li><span class="muted">Member since</span><span>{{ stats.member_since.strftime("%-d %B %Y") }}</span></li>
+      <li><span class="muted">Reviews today</span><span>{{ stats.reviews_today }}</span></li>
+      <li><span class="muted">Reviews all-time</span><span>{{ stats.total_reviews }}</span></li>
+      <li><span class="muted">Cards seen</span><span>{{ stats.cards_seen }}</span></li>
+    </ul>
+  </div>
+
+  <div class="settings-section">
+    <h2>Danger zone</h2>
+    {% if confirm_delete %}
+    <p class="muted">
+      Delete <strong>{{ profile.name }}</strong>? This permanently erases their
+      practice history and verb settings — there's no undo.
+    </p>
+    <div class="profile-delete-actions">
+      <form method="post" action="/profiles/{{ profile.id }}/delete">
+        <button type="submit" class="profile-delete-confirm-button">Yes, delete everything</button>
+      </form>
+      <a href="/profiles/{{ profile.id }}/edit" class="profile-delete-cancel-link">Cancel</a>
+    </div>
+    {% else %}
+    <a href="/profiles/{{ profile.id }}/edit?confirm_delete=1" class="profile-delete-button">Delete profile</a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

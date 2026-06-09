@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Practice · Züritüütsch Verb Trainer{% endblock %}
+{% block content %}
+<section class="practice">
+  <div id="progress">
+    {% include "_progress.html" %}
+  </div>
+
+  <div id="card-container"
+       hx-get="/practice/card?profile_id={{ profile_id }}"
+       hx-trigger="load"
+       hx-swap="innerHTML">
+    <p class="muted loading">Loading your next card…</p>
+  </div>
+</section>
+{% endblock %}

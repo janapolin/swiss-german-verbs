@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Profiles · Züritüütsch Verb Trainer{% endblock %}
+{% block content %}
+<section class="profile-picker">
+  <h1>Who's learning?</h1>
+
+  {% if profiles %}
+  <ul class="profile-list">
+    {% for profile in profiles %}
+    <li>
+      <form method="post" action="/profiles/{{ profile.id }}/select">
+        <button type="submit" class="profile-button">{{ profile.name }}</button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="muted">No profiles yet — create one to start practicing.</p>
+  {% endif %}
+
+  <form method="post" action="/profiles" class="new-profile-form">
+    <input type="text" name="name" placeholder="New profile name" required maxlength="60">
+    <button type="submit">Create</button>
+  </form>
+</section>
+{% endblock %}
+{% block nav %}{% endblock %}

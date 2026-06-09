@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block title %}{{ "Edit verb" if is_edit else "Add a verb" }} · Verbs · Züritüütsch Verb Trainer{% endblock %}
+{% block content %}
+<section class="verb-form-page">
+  {% if is_edit %}
+  <a href="/verbs/{{ verb.id }}" class="back-link">&larr; {{ verb.infinitive }}</a>
+  {% else %}
+  <a href="/verbs" class="back-link">&larr; Verbs</a>
+  {% endif %}
+  <h1>{{ "Edit verb" if is_edit else "Add a verb" }}</h1>
+
+  {% if errors %}
+  <ul class="form-errors">
+    {% for error in errors %}<li>{{ error }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+
+  <form
+    method="post"
+    action="{{ ('/verbs/' ~ verb.id ~ '/edit') if is_edit else '/verbs/new' }}"
+    class="verb-form"
+  >
+    <div class="form-field">
+      <label for="infinitive">Infinitive (full form, e.g. <code>uufhänke</code>)</label>
+      <input type="text" id="infinitive" name="infinitive" value="{{ values.infinitive }}" required>
+    </div>
+
+    <div class="form-field">
+      <label for="english_gloss">English meaning</label>
+      <input
+        type="text" id="english_gloss" name="english_gloss"
+        value="{{ values.english_gloss }}" required
+      >
+    </div>
+
+    <div class="form-field">
+      <label for="separable_prefix_override">
+        Separable prefix
+        <span class="form-field-hint">— leave blank to detect from the infinitive automatically</span>
+      </label>
+      <input
+        type="text" id="separable_prefix_override" name="separable_prefix_override"
+        value="{{ values.separable_prefix_override }}" placeholder="e.g. uuf"
+      >
+    </div>
+
+    <fieldset class="form-section">
+      <legend>Auxiliary (forms the past tense)</legend>
+      <label class="form-radio">
+        <input type="radio" name="aux" value="ha" {{ "checked" if values.aux == "ha" else "" }}>
+        “haben”-type — <em>er het gmacht</em>
+      </label>
+      <label class="form-radio">
+        <input type="radio" name="aux" value="si" {{ "checked" if values.aux == "si" else "" }}>
+        “sein”-type — <em>er isch choo</em>
+      </label>
+    </fieldset>
+
+    <p class="form-help">
+      For separable verbs, enter the conjugated forms and participle
+      <strong>without</strong> the prefix — e.g. for <code>uufhänke</code>
+      (prefix <code>uuf</code>), enter <code>hänkt</code> and <code>ghänkt</code>,
+      not <code>uufhänkt</code> / <code>uufghänkt</code>. The app reattaches the
+      prefix wherever it belongs (§5/§7).
+    </p>
+
+    <fieldset class="form-section">
+      <legend>Present tense</legend>
+      <div class="form-field">
+        <label for="present_sg1">I …</label>
+        <input type="text" id="present_sg1" name="present_sg1" value="{{ values.present_sg1 }}" required>
+      </div>
+      <div class="form-field">
+        <label for="present_sg2">you …</label>
+        <input type="text" id="present_sg2" name="present_sg2" value="{{ values.present_sg2 }}" required>
+      </div>
+      <div class="form-field">
+        <label for="present_sg3">he/she/it …</label>
+        <input type="text" id="present_sg3" name="present_sg3" value="{{ values.present_sg3 }}" required>
+      </div>
+      <div class="form-field">
+        <label for="present_pl">we / you-all / they …</label>
+        <input type="text" id="present_pl" name="present_pl" value="{{ values.present_pl }}" required>
+      </div>
+    </fieldset>
+
+    <div class="form-field">
+      <label for="participle">Past participle</label>
+      <input type="text" id="participle" name="participle" value="{{ values.participle }}" required>
+    </div>
+
+    <fieldset class="form-section">
+      <legend>Konjunktiv II (“would”)</legend>
+      <input
+        type="checkbox" id="has-konj2" name="has_konj2" class="konj2-toggle"
+        {{ "checked" if values.has_konj2 else "" }}
+      >
+      <label for="has-konj2" class="konj2-toggle-label">This verb has a “would” form</label>
+      <div class="konj2-fields">
+        <div class="form-field">
+          <label for="konj2_sg1">I would …</label>
+          <input type="text" id="konj2_sg1" name="konj2_sg1" value="{{ values.konj2_sg1 }}">
+        </div>
+        <div class="form-field">
+          <label for="konj2_sg2">you would …</label>
+          <input type="text" id="konj2_sg2" name="konj2_sg2" value="{{ values.konj2_sg2 }}">
+        </div>
+        <div class="form-field">
+          <label for="konj2_sg3">he/she/it would …</label>
+          <input type="text" id="konj2_sg3" name="konj2_sg3" value="{{ values.konj2_sg3 }}">
+        </div>
+        <div class="form-field">
+          <label for="konj2_pl">we / you-all / they would …</label>
+          <input type="text" id="konj2_pl" name="konj2_pl" value="{{ values.konj2_pl }}">
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="form-field">
+      <label for="notes">Notes</label>
+      <textarea id="notes" name="notes" rows="3">{{ values.notes }}</textarea>
+    </div>
+
+    <button type="submit" class="verb-form-submit">{{ "Save changes" if is_edit else "Add verb" }}</button>
+  </form>
+</section>
+{% endblock %}

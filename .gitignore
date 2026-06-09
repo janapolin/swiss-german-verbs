@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.venv/
+*.egg-info/
+.claude/
+/data/resources-images/
+
+# Runtime DB (rebuildable from `ingest.py`, §3) — never committed.
+data/app.db

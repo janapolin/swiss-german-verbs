@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Verbs · Züritüütsch Verb Trainer{% endblock %}
+{% block content %}
+<section class="verb-list-page">
+  <div class="verb-list-header">
+    <h1>Verbs</h1>
+    <a href="/verbs/new" class="verb-add-button" aria-label="Add verb">+</a>
+  </div>
+
+  <div class="verb-filter-tabs">
+    {% for option, label in (("all", "All"), ("enabled", "Enabled"), ("disabled", "Disabled")) %}
+    <a
+      href="/verbs?filter={{ option }}"
+      class="verb-filter-tab {{ 'active' if active_filter == option else '' }}"
+    >{{ label }}</a>
+    {% endfor %}
+  </div>
+
+  <div class="verb-bulk-actions">
+    <form method="post" action="/verbs/enable-all?filter={{ active_filter }}">
+      <button type="submit" class="verb-bulk-button">Enable All</button>
+    </form>
+    <form method="post" action="/verbs/disable-all?filter={{ active_filter }}">
+      <button type="submit" class="verb-bulk-button">Disable All</button>
+    </form>
+  </div>
+
+  <ul class="verb-list" id="verb-list">
+    {% for row in rows %}
+    {% include "_verb_row.html" %}
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

@@ -1,0 +1,121 @@
+id,infinitive,english_gloss,verb_class,separable_prefix,aux,participle,notes
+100,aafange,to begin,A,aa,ha,aagfange,
+101,aazünde,to light,A,aa,ha,aazündt,
+102,abruume,to clear away,A,ab,ha,abgruumet,
+103,binde,to tie,A,,ha,punde,strong (b->p)
+104,bliibe,to stay,A,,si,plibe,strong
+105,boue,to build,A,,ha,poue,VERIFY participle
+106,bruuche,to need,A,,ha,pruucht,
+107,chauffe,to buy,A,,ha,gchaufft,
+108,cheere,to sweep,A,,ha,gcheert,"separable variant: umcheere (um-, si, umgcheert)"
+109,faare,to drive,A,,si,gfaare,
+110,falle,to fall,A,,si,gfale,
+111,fehle,to be missing,A,,ha,gfèèlt,normalize èè
+112,finde,to find,A,,ha,gfunde,strong
+113,früüre,to freeze,A,,ha,gfroore,strong; aux VERIFY
+114,ghöre,to hear,A,,ha,ghöört,also = to belong
+115,gspüüre,to sense,A,,ha,gspüürt,
+116,gönne,to win,A,,ha,ggune,also = to pick
+117,hole,to fetch,A,,ha,gholt,
+118,kenne,to know (be acquainted),A,,ha,gkännt,
+119,läbe,to live,A,,ha,gläbt,
+120,lauffe,to walk,A,,si,gloffe,
+121,lehre,to teach,A,,ha,glehrt,also = to learn
+122,leere,to empty,A,,ha,glèèrt,normalize èè
+123,lupfe,to lift,A,,ha,glupft,
+124,mache,to do,A,,ha,gmacht,
+125,mäine,to mean,A,,ha,gmäint,
+126,renne,to run,A,,si,grännt,
+127,rede,to talk,A,,ha,gredt,
+128,rüere,to throw,A,,ha,grüert,
+129,schaffe,to work,A,,ha,gschaffet,
+130,schlaaffe,to sleep,A,,ha,gschlaaffe,
+131,schläike,to drag,A,,ha,gschläikt,
+132,schniide,to cut,A,,ha,gschnitte,strong
+133,schreie,to scream,A,,ha,gschroue,strong
+134,schriibe,to write,A,,ha,gschribe,strong
+135,schwüme,to swim,A,,si,gschwume,strong
+136,spile,to play,A,,ha,gspilt,
+137,springe,to jump,A,,si,gsprunge,also = to run
+138,sueche,to search,A,,ha,gsuecht,
+139,troue,to trust,A,,ha,trout,
+140,trucke,to press,A,,ha,truckt,also = to print
+141,uufhänke,to hang up,A,uuf,ha,uufghänkt,
+142,uufhöre,to stop,A,uuf,ha,uufghört,
+143,verlüüre,to lose,A,,ha,verloore,ver- inseparable
+144,verzele,to tell,A,,ha,verzelt,inseparable
+145,winke,to wave,A,,ha,gwunke,strong
+146,wohne,to reside,A,,ha,gwont,
+147,zäige,to show,A,,ha,zäiget,
+148,zeere,to tug,A,,ha,zeert,
+149,aalange,to touch,B,aa,ha,aaglanget,
+150,biige,to stack,B,,ha,pige,b->p; VERIFY
+151,choche,to cook,B,,ha,gchochet,
+152,danke,to thank,B,,ha,tanket,d->t
+153,fiire,to celebrate,B,,ha,gfiiret,
+154,flueche,to swear,B,,ha,gfluechet,
+155,folge,to obey,B,,ha,gfolget,aux VERIFY
+156,frööge,to ask,B,,ha,gfrööget,
+157,hange,to hang,B,,ha,ghanget,aux VERIFY
+158,hebe,to hold,B,,ha,ghebet,
+159,lache,to laugh,B,,ha,glachet,
+160,lange,to reach,B,,ha,glanget,separable variant: uuslange (uus-)
+161,luege,to look,B,,ha,glueget,"separable variant: aaluege (aa-, aaglueget)"
+162,soorge,to care,B,,ha,gsoorget,
+163,saage,to saw,B,,ha,gsaaget,
+164,schäle,to ring,B,,ha,gschälet,
+165,schnöre,to chatter,B,,ha,gschnöret,derb
+166,schüürge,to push,B,,ha,gschüürget,
+167,trüle,to turn,B,,ha,trület,
+168,verraate,to betray,B,,ha,verraate,inseparable
+169,versoorge,to put away,B,,ha,versoorget,inseparable
+170,aalüüte,to phone,B,aa,ha,aaglüütet,
+171,bhalte,to keep,B,,ha,phalte,be- inseparable; b->p
+172,chöie,to chew,B,,ha,gchöiet,VERIFY
+173,chratze,to scratch,B,,ha,gchratzet,variant chräble/gchräblet
+174,chützle,to tickle,B,,ha,gchützlet,
+175,grochse,to groan,B,,ha,ggrochset,
+176,hueschte,to cough,B,,ha,ghueschtet,
+177,hüete,to mind,B,,ha,ghüetet,
+178,lisme,to knit,B,,ha,glismet,
+179,lose,to listen,B,,ha,gloset,"separable variant: zuelose (zue-, zuegloset)"
+180,luure,to lurk,B,,ha,gluuret,
+181,pfuuse,to snooze,B,,ha,pfuuset,
+182,poschte,to shop,B,,ha,poschtet,
+183,prichte,to report,B,,ha,prichtet,be- inseparable
+184,rächne,to calculate,B,,ha,grächnet,
+185,rȯȯtle,to guess wildly,B,,ha,grȯȯtlet,normalize triple-dot-o -> ö
+186,trööschte,to console,B,,ha,trööschtet,
+187,tschuute,to play football,B,,ha,tschuutet,
+188,schnarchle,to snore,B,,ha,gschnarchlet,
+189,waarte,to wait,B,,ha,gwaartet,
+190,zöisle,to play with fire,B,,ha,zöislet,
+191,zügle,to move house,B,,ha,züglet,aux VERIFY
+192,biisse,to bite,C,,ha,bisse,b->p
+193,bschiisse,to cheat,C,,ha,pschisse,be- inseparable
+194,büeze,to mend,C,,ha,püezt,
+195,butze,to clean,C,,ha,putzt,
+196,chotze,to puke,C,,ha,gchotzet,derb
+197,gnüüsse,to enjoy,C,,ha,ggnosse,also = to sneeze
+198,grüesse,to greet,C,,ha,ggrüesst,
+199,häisse,to be called,C,,ha,ghäisse,
+200,häize,to heat,C,,ha,ghäizt,
+201,lösche,to extinguish,C,,ha,glöscht,
+202,nütze,to be useful,C,,ha,gnützt,
+203,passe,to fit,C,,ha,passt,
+204,räise,to travel,C,,si,gräist,
+205,riisse,to tear,C,,ha,grisse,strong
+206,ruusche,to rustle,C,,ha,gruuschet,
+207,schiisse,to shit,C,,ha,gschisse,derb
+208,schletze,to slam,C,,ha,gschletzt,
+209,schnüüze,to blow one's nose,C,,ha,gschnüüzt,
+210,schwätze,to chat,C,,ha,gschwätzt,
+211,sitze,to sit,C,,si,gsässe,strong
+212,sprütze,to squirt,C,,ha,gsprützt,
+213,tusche,to shower,C,,ha,tuschet,
+214,tuusche,to swap,C,,ha,tuuschet,
+215,tüüsche,to deceive,C,,ha,tüüscht,enttüüsche uses ent- (inseparable)
+216,uufpasse,to pay attention,C,uuf,ha,uufpasst,
+217,wäsche,to wash,C,,ha,gwäsche,
+218,wöische,to wish,C,,ha,gwöischt,normalize; HG wünschen
+219,wüsche,to wipe,C,,ha,gwüscht,

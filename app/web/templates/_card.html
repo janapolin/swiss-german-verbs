@@ -1,0 +1,57 @@
+{% if card %}
+<div class="prompt">
+  <p class="prompt-infinitive placeholder" data-role="infinitive">{{ card.front.infinitive }}</p>
+  <p class="prompt-gloss">{{ card.front.gloss }}</p>
+</div>
+
+<div class="flashcard" id="flashcard">
+  <span class="tense-pill {{ tense_css_class }}">{{ card.front.tense_label }}</span>
+  <p class="card-pronoun">{{ pronoun }}</p>
+  <p class="card-answer placeholder" data-role="answer">{{ card.answer }}</p>
+
+  <div class="card-bottom">
+    <div class="card-action card-hint" data-role="hint" onclick="swissverbReveal()">
+      Tap to show answer
+    </div>
+
+    <div class="card-grades placeholder" data-role="grades">
+      <form hx-post="/practice/grade" hx-target="#card-container" hx-swap="innerHTML" class="grade-form">
+        <input type="hidden" name="profile_id" value="{{ profile_id }}">
+        <input type="hidden" name="card_key" value="{{ card.card_key }}">
+        <button type="submit" name="grade" value="hard" class="grade-btn grade-hard">Hard</button>
+        <button type="submit" name="grade" value="good" class="grade-btn grade-good">Easy</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function swissverbReveal() {
+    document.querySelectorAll('[data-role="infinitive"], [data-role="answer"], [data-role="grades"]')
+      .forEach(function (el) { el.classList.remove('placeholder'); });
+    var hint = document.querySelector('[data-role="hint"]');
+    if (hint) { hint.classList.add('placeholder'); }
+
+    var card = document.getElementById('flashcard');
+    if (card) {
+      card.classList.add('flipping');
+      card.addEventListener('animationend', function handler() {
+        card.classList.remove('flipping');
+        card.removeEventListener('animationend', handler);
+      });
+    }
+  }
+</script>
+{% else %}
+<div class="flashcard flashcard-empty">
+  <p class="card-pronoun">🎉</p>
+  <p>You're all caught up!</p>
+  <p class="muted">Check back later, or enable more verbs/tenses in Settings.</p>
+</div>
+{% endif %}
+
+{% if show_progress_oob %}
+<div id="progress" hx-swap-oob="true">
+  {% include "_progress.html" %}
+</div>
+{% endif %}

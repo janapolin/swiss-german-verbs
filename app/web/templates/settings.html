@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Settings · Züritüütsch Verb Trainer{% endblock %}
+{% block content %}
+<section class="settings-page">
+  <h1>Settings</h1>
+
+  <div class="settings-section">
+    <h2>Profile</h2>
+    <p class="settings-profile-name">{{ profile.name }}</p>
+    <div class="settings-profile-links">
+      <a href="/profiles/{{ profile.id }}/edit">Edit profile</a>
+      <a href="/profiles">Switch profile</a>
+    </div>
+  </div>
+
+  <div class="settings-section">
+    <h2>Tenses to drill</h2>
+    <p class="muted">Toggle any combination — practice only pulls cards from enabled tenses.</p>
+    <form method="post" action="/settings">
+      <ul class="toggle-list">
+        {% for toggle in tense_toggles %}
+        <li class="toggle-row">
+          <span>{{ toggle.label }}</span>
+          <label class="toggle-switch">
+            <input type="checkbox" name="{{ toggle.tense.value }}" {{ "checked" if toggle.checked else "" }}>
+            <span class="toggle-slider"></span>
+          </label>
+        </li>
+        {% endfor %}
+      </ul>
+      <button type="submit" class="settings-save-button">Save</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

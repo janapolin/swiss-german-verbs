@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Züritüütsch Verb Trainer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ── PROFILE PICKER (shown when no active profile) ─────────────────────── -->
+<main id="screen-profile" class="screen page" style="display:none">
+  <div class="profile-picker">
+    <h1 style="margin-bottom:0.25rem">Züritüütsch</h1>
+    <p class="muted">Choose or create a profile to start.</p>
+    <ul class="profile-list" id="profile-list"></ul>
+    <div class="new-profile-form">
+      <input id="new-profile-input" type="text" placeholder="New profile name" maxlength="40" autocomplete="off">
+      <button id="create-profile-btn">Create</button>
+    </div>
+  </div>
+</main>
+
+<!-- ── PRACTICE SCREEN ───────────────────────────────────────────────────── -->
+<main id="screen-practice" class="screen page" style="display:none">
+  <section class="practice">
+    <div id="progress">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+      <p class="progress-label" id="progress-label">Daily goal  0 / 50</p>
+      <p class="progress-goal-met hidden" id="progress-goal-met">🎉 Daily goal reached — keep going if you'd like!</p>
+    </div>
+    <div id="card-container">
+      <p class="muted loading">Loading…</p>
+    </div>
+  </section>
+</main>
+
+<!-- ── VERBS LIST SCREEN ──────────────────────────────────────────────────── -->
+<main id="screen-verbs" class="screen page" style="display:none">
+  <section class="verb-list-page">
+    <div class="verb-list-header">
+      <h1>Verbs</h1>
+    </div>
+    <div class="verb-filter-tabs">
+      <a href="#" class="verb-filter-tab active" data-filter="all">All</a>
+      <a href="#" class="verb-filter-tab" data-filter="enabled">Enabled</a>
+      <a href="#" class="verb-filter-tab" data-filter="disabled">Disabled</a>
+    </div>
+    <div class="verb-bulk-actions">
+      <div><button class="verb-bulk-button" id="enable-all-btn">Enable All</button></div>
+      <div><button class="verb-bulk-button" id="disable-all-btn">Disable All</button></div>
+    </div>
+    <ul class="verb-list" id="verb-list"></ul>
+  </section>
+</main>
+
+<!-- ── VERB DETAIL SCREEN ────────────────────────────────────────────────── -->
+<main id="screen-verb-detail" class="screen page" style="display:none">
+  <section class="verb-detail" id="verb-detail-content"></section>
+</main>
+
+<!-- ── SETTINGS SCREEN ───────────────────────────────────────────────────── -->
+<main id="screen-settings" class="screen page" style="display:none">
+  <section class="settings-page">
+    <h1>Settings</h1>
+
+    <div class="settings-section">
+      <h2>Profile</h2>
+      <p class="settings-profile-name" id="settings-profile-name"></p>
+      <div id="profile-stats"></div>
+      <div class="profile-rename-form">
+        <input id="rename-input" type="text" placeholder="New name" maxlength="40" autocomplete="off">
+        <button class="settings-save-button" id="rename-profile-btn">Rename</button>
+      </div>
+      <div class="profile-delete-actions" style="margin-top:0.5rem">
+        <button class="profile-delete-button" id="delete-profile-btn">Delete profile</button>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h2>Tenses to drill</h2>
+      <p class="muted">Toggle any combination — practice only pulls cards from enabled tenses.</p>
+      <ul class="toggle-list" id="tense-toggle-list"></ul>
+    </div>
+
+    <div class="settings-section">
+      <h2>Switch profile</h2>
+      <div id="profile-switch-list" style="margin-bottom:0.75rem"></div>
+      <div class="new-profile-form">
+        <input id="new-profile-input-settings" type="text" placeholder="New profile name" maxlength="40" autocomplete="off">
+        <button id="create-profile-settings-btn">Create</button>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h2>Flagged cards</h2>
+      <p class="muted" style="margin-bottom:0.5rem">
+        Use ⚑ on a card to report a conjugation that looks wrong.
+        Copy the report and paste it into a GitHub issue to fix it.
+      </p>
+      <div id="flags-section"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ── BOTTOM NAV ─────────────────────────────────────────────────────────── -->
+<nav class="bottom-nav" id="bottom-nav" style="display:none">
+  <button class="nav-item" data-nav="practice">
+    <span class="nav-icon">▶</span><span>Practice</span>
+  </button>
+  <button class="nav-item" data-nav="verbs">
+    <span class="nav-icon">📖</span><span>Verbs</span>
+  </button>
+  <button class="nav-item" data-nav="settings">
+    <span class="nav-icon">⚙</span><span>Settings</span>
+  </button>
+</nav>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

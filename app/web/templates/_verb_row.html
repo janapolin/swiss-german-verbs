@@ -1,0 +1,18 @@
+{% if row %}
+<li class="verb-list-item-row" id="verb-row-{{ row.verb.id }}">
+  <a href="/verbs/{{ row.verb.id }}" class="verb-list-link">
+    <span class="verb-infinitive">{{ row.verb.infinitive }}</span>
+    <span class="verb-gloss muted">{{ row.verb.english_gloss }}</span>
+  </a>
+  <label class="toggle-switch verb-toggle">
+    <input
+      type="checkbox"
+      {{ "checked" if row.enabled else "" }}
+      hx-post="/verbs/{{ row.verb.id }}/toggle?filter={{ active_filter }}"
+      hx-target="#verb-row-{{ row.verb.id }}"
+      hx-swap="outerHTML"
+    >
+    <span class="toggle-slider"></span>
+  </label>
+</li>
+{% endif %}

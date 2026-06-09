@@ -1,0 +1,27 @@
+id,infinitive,english_gloss,separable_prefix,aux,has_konjunktiv2,is_auxiliary,present_sg1,present_sg2,present_sg3,present_pl,participle,konj2_sg1,konj2_sg2,konj2_sg3,konj2_pl,notes
+1,si,to be,,si,true,true,bin,bisch,isch,sind,gsi,wär,wärsch,wär,wäred,
+2,ha,to have,,ha,true,true,han,häsch,het,händ,gha,hätt,hättsch,hätt,hätted,sheet shows er=hät; common variant er=het - VERIFY preference
+3,ga,to go,,si,false,false,gahn,gahsch,gaht,gönd,gange,,,,,sg1 optional -n(e): gaan[e]; motion->si
+4,tue,to do,,ha,false,false,tue,tuesch,tuet,tüend,taa,,,,,sg1 optional: tue[ne]
+5,ge,to give,,ha,false,false,gibe,gisch,git,gänd,gge,,,,,
+6,wele,to want,,ha,true,false,wött,wöttsch,wött,wönd,wele,wett,wettsch,wett,wetted,variant wott[will]
+7,müese,to have to,,ha,false,false,mues,muesch,mues,müend,müese,,,,,modal
+8,chöne,can,,ha,true,false,cha,chasch,cha,chönd,chöne,chönt,chöntsch,chönt,chönted,modal
+9,möge,to like,,ha,false,false,mag,magsch,mag,möged,möge,,,,,modal
+10,neh,to take,,ha,false,false,nime,nimsch,nimt,nämed,gnaa,,,,,
+11,ässe,to eat,,ha,false,false,isse,issisch,isst,ässed,gässe,,,,,
+12,läse,to read,,ha,false,false,lise,lisisch,list,läsed,gläse,,,,,
+13,säge,to say,,ha,false,false,säge,säisch,säit,säged,gsäit,,,,,
+14,trääge,to carry,,ha,false,false,trääge,träisch,träit,trääged,träit,,,,,
+15,cho,to come,,si,false,false,chumme,chunnsch,chunnt,chömed,cho,,,,,motion->si
+16,zie,to pull,,ha,false,false,zie,ziesch,ziet,ziend,zoge,,,,,sg1 optional: zie[ne]; aux VERIFY (ha/si)
+17,träffe,to meet,,ha,false,false,triffe,triffsch,trifft,träffed,troffe,,,,,
+18,hälfe,to help,,ha,false,false,hilffe,hilffsch,hilfft,hälffed,ghulffe,,,,,shares column with träffe; pl form VERIFY
+19,wüsse,to know,,ha,false,false,weiss,weissch,weiss,wüssed,gwüsst,,,,,
+20,sele,to be supposed to,,ha,true,false,sell / sött,sellsch / söttsch,sell / sött,seled / sötted,sele,sett,settsch,sett,setted,participle only with Konj II
+21,gsee,to see,,ha,false,false,gsee,gseesch,gseet,gseend,gsee,,,,,sg1 optional: gsee[ne]
+22,stah,to stand,,si,false,false,staa,staasch,staat,stönd,gstande,,,,,sg1 optional: staa[ne]; aux si VERIFY
+23,la,to let,,ha,false,false,lahn,laasch,laht,lönd,glaa,,,,,sg1 optional: laa[ne]
+24,legge,to lay,,ha,false,false,legge,läisch,läit,legged,gläit,,,,,
+25,ligge,to lie,,ha,false,false,ligge,liisch,liit,ligged,gläge,,,,,
+26,werde,to become / future aux,,si,true,true,wird,wirsch,wird,wèèrded,woorde,wüürd,wüürdsch,wüürd,wèèrded,future auxiliary (wird + infinitive); perfect: isch woorde; KII pl also wüürdid

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{{ verb.infinitive }} · Verbs · Züritüütsch Verb Trainer{% endblock %}
+{% block content %}
+<section class="verb-detail">
+  <div class="verb-detail-header">
+    <a href="/verbs" class="back-link">&larr; Verbs</a>
+    <a href="/verbs/{{ verb.id }}/edit" class="verb-edit-link">Edit</a>
+  </div>
+  <h1>{{ verb.infinitive }}</h1>
+  <p class="muted">{{ verb.english_gloss }}</p>
+  {% if verb.separable_prefix %}
+  <p class="muted">Separable prefix: <code>{{ verb.separable_prefix }}-</code></p>
+  {% endif %}
+  {% if verb.notes %}
+  <p class="verb-notes">{{ verb.notes }}</p>
+  {% endif %}
+
+  {% for section in table %}
+  <div class="tense-section">
+    <h2><span class="tense-pill {{ section.tense_css_class }}">{{ section.tense_label }}</span></h2>
+    <table class="conjugation-table">
+      {% for row in section.rows %}
+      <tr>
+        <td class="muted">{{ row.person_label }}</td>
+        <td class="answer-cell">{{ row.answer }}</td>
+        <td class="rating-cell" aria-label="mastery {{ row.rating }} of {{ row.rating_range | length }}">
+          {% for i in row.rating_range %}<span class="star {{ 'star-filled' if i < row.rating else 'star-empty' }}">★</span>{% endfor %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

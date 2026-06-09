@@ -1,0 +1,8 @@
+{% set pct = ([reviews_today / daily_goal_target * 100, 100] | min) if daily_goal_target else 0 %}
+<div class="progress-bar">
+  <div class="progress-fill" style="width: {{ pct }}%"></div>
+</div>
+<p class="progress-label">Daily goal&nbsp;&nbsp;{{ reviews_today }} / {{ daily_goal_target }}</p>
+{% if daily_goal_target and reviews_today >= daily_goal_target %}
+<p class="progress-goal-met">🎉 Daily goal reached — keep going if you'd like!</p>
+{% endif %}
